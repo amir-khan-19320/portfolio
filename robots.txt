@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+Host: https://amir-khan-19320.github.io/portfolio
+Sitemap: https://amir-khan-19320.github.io/portfolio/sitemap.xml
