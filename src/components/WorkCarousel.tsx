@@ -66,8 +66,8 @@ export function WorkCarousel({
               <h4 className="mt-6 font-serif text-2xl tracking-tight text-foreground">
                 {project.title}
               </h4>
-              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted">
-                {project.summary}
+              <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted">
+                {project.result}
               </p>
               <ul className="mt-auto flex flex-wrap gap-1.5 pt-6">
                 {project.stack.slice(0, 4).map((item) => (

@@ -169,6 +169,12 @@ export const profile = {
       domain: "Healthcare",
       summary:
         "Appointments, provider and facility onboarding, and split databases for a multi-sided healthcare product.",
+      problem:
+        "Patients, providers, and facilities had to live on one product — booking, onboarding, search, payments — without mixing who owns provider data versus facility data.",
+      constraint:
+        "Two PostgreSQL databases, not one schema. Cross-database reads and writes still had to work. Search and geo listings could not wait on a merge that was never going to happen.",
+      result:
+        "One Laravel 12 API now serves patient booking and provider/facility ops. Search and cards run across the split databases. Razorpay, Twilio, and geo queries are first-class, not afterthoughts.",
       stack: [
         "Laravel 12",
         "React 19",
@@ -179,10 +185,10 @@ export const profile = {
         "Twilio",
       ],
       highlights: [
-        "Laravel 12 API with JWT, Scout/Elasticsearch search, Razorpay, Twilio, and AWS S3.",
-        "React 19 customer web and ecosystem admin (Vite) for booking, profiles, and onboarding.",
-        "Split provider and facility PostgreSQL databases with cross-database reads and writes.",
-        "Redis search manager for categorized provider/facility cards and geo queries.",
+        "Kept provider and facility ownership split, then added cross-database reads and writes instead of collapsing the schema.",
+        "Laravel 12 API with JWT for both customer web and ecosystem admin — booking, profiles, and onboarding on one contract.",
+        "Elasticsearch plus a Redis search manager for categorized cards and geo queries across both databases.",
+        "Razorpay, Twilio, and AWS S3 wired as production integrations, not demo stubs.",
       ],
       featured: true,
       caseStudy: true,
@@ -192,11 +198,6 @@ export const profile = {
         { from: "Laravel 12", to: "PostgreSQL (provider / facility)" },
         { from: "Laravel 12", to: "Elasticsearch · Redis · Razorpay · Twilio" },
       ],
-      outcomes: [
-        "One API serving patient booking and facility/provider operations.",
-        "Search and listing across split databases without collapsing ownership of provider vs facility data.",
-        "Payments, communications, and geo search wired as first-class integrations.",
-      ],
     },
     {
       slug: "bharatemart",
@@ -205,6 +206,12 @@ export const profile = {
       domain: "Marketplace",
       summary:
         "Seller and buyer flows on Magento 2.4 — GraphQL, logistics, payments, and a custom OMS bridge.",
+      problem:
+        "Magento 2.4 had to behave like a marketplace — sellers, buyers, RFQ, split orders, refunds — while GraphQL and homepage paths were slowing down under catalog load.",
+      constraint:
+        "Could not fork Magento checkout. Marketplace behavior had to live in modules. Storefronts and apps talk GraphQL, not a one-off REST dump. Logistics and refunds had to stay on the order, not in admin notes.",
+      result:
+        "GraphQL covers catalog, checkout, vendors, RFQ, and returns. OMS, ShipRocket, split orders, OTP login, and Razorpay refunds are modules. Performance work targets the homepage and GraphQL queries that actually get hit in production.",
       stack: [
         "Magento 2.4",
         "GraphQL",
@@ -213,9 +220,10 @@ export const profile = {
         "Custom modules",
       ],
       highlights: [
-        "GraphQL surface for catalog, checkout, vendors, RFQ, and returns.",
-        "Custom OMS API, ShipRocket shipping, and payment refund paths.",
-        "Performance work: homepage cache, GraphQL timing, and production-sensitive catalog queries.",
+        "Built marketplace behavior as Magento modules — buyers, clusters, split orders, OTP login — instead of patching core checkout.",
+        "Exposed catalog, checkout, vendors, RFQ, and returns on GraphQL so apps did not need a parallel API.",
+        "Bridged Magento to a dedicated OMS, ShipRocket shipping, and Razorpay refunds as explicit paths.",
+        "Added a performance module for homepage cache and GraphQL timing on production-sensitive catalog queries.",
       ],
       modules: [
         "Performance",
@@ -238,11 +246,6 @@ export const profile = {
         { from: "Magento 2.4", to: "OMS API" },
         { from: "Magento 2.4", to: "ShipRocket · Razorpay" },
       ],
-      outcomes: [
-        "Marketplace behavior (sellers, buyers, clusters, KYC) without forking Magento’s core checkout blindly.",
-        "Order split, logistics, and refunds handled as explicit modules instead of one-off patches.",
-        "A performance module aimed at GraphQL and homepage paths that actually get hit in production.",
-      ],
     },
     {
       slug: "bharatemart-oms",
@@ -251,11 +254,17 @@ export const profile = {
       domain: "OMS",
       summary:
         "Order lifecycle, invoices, and queue-backed processing for the marketplace.",
+      problem:
+        "Order lifecycle, invoices, barcodes, and payment verification were bloating Magento admin and competing with storefront work.",
+      constraint:
+        "Marketplace order spikes. Verification state (pending → approved / rejected) cannot be lost. Magento stays the storefront; it cannot become the back-office.",
+      result:
+        "A dedicated Laravel 10 service now owns order operations. SQS FIFO carries the async work. Invoices and barcodes generate in the same lifecycle Magento already started.",
       stack: ["Laravel 10", "SQS", "PDF", "Barcode"],
       highlights: [
-        "Laravel 10 service for order operations, PDF invoices, and barcodes.",
-        "SQS FIFO queues for reliable async work.",
-        "Payment verification states from pending through approval and rejection.",
+        "Moved order work out of Magento admin into a Laravel 10 API Magento already calls.",
+        "Used SQS FIFO so verification jobs survive spikes without dropping state.",
+        "Generated PDF invoices and barcodes as part of the order lifecycle, not a later export.",
       ],
       featured: false,
       caseStudy: true,
@@ -263,11 +272,6 @@ export const profile = {
         { from: "Magento marketplace", to: "OMS API (Laravel 10)" },
         { from: "Laravel 10", to: "SQS FIFO queues" },
         { from: "Laravel 10", to: "PDF invoices · barcodes · MySQL" },
-      ],
-      outcomes: [
-        "Order work sits in a dedicated service instead of bloating Magento admin.",
-        "Async jobs survive spikes without losing verification state.",
-        "Invoices and barcodes are generated as part of the same lifecycle.",
       ],
     },
     {
@@ -277,11 +281,17 @@ export const profile = {
       domain: "Commerce",
       summary:
         "Magento 2 commerce stack with a Docker local environment, Nginx, and MySQL.",
+      problem:
+        "Magento work depended on a shared laptop install. New engineers could not boot the store without someone else's machine.",
+      constraint:
+        "Magento 2 needs SSL, Elasticsearch, Redis, Nginx, and MySQL together. Bring-up had to be repeatable — scripts and env samples, not a chat dump.",
+      result:
+        "Docker Compose now stands up the store with SSL and the usual Magento services. Deploy scripts mean a new clone can actually run.",
       stack: ["Magento 2", "Docker", "Nginx"],
       highlights: [
-        "Docker Compose local stack with SSL, Elasticsearch, and Redis.",
-        "Magento 2 customizations and operational deploy scripts.",
-        "Repeatable local bring-up so Magento work does not depend on a shared laptop install.",
+        "Replaced the shared Magento laptop with a Docker Compose stack: SSL, Elasticsearch, Redis, Nginx, MySQL.",
+        "Wrote deploy scripts and env samples so Magento bring-up is documented, not tribal.",
+        "Kept Magento customizations inside that stack so local and staging stay close.",
       ],
       featured: false,
       caseStudy: true,
@@ -289,10 +299,6 @@ export const profile = {
         { from: "Browser", to: "Nginx (SSL)" },
         { from: "Nginx", to: "Magento 2 PHP" },
         { from: "Magento 2", to: "MySQL · Redis · Elasticsearch" },
-      ],
-      outcomes: [
-        "A Dockerized Magento store that new engineers can actually boot.",
-        "Deploy scripts and env samples instead of tribal knowledge.",
       ],
     },
     {
@@ -302,11 +308,17 @@ export const profile = {
       domain: "Commerce",
       summary:
         "Magento 2 upgrade and commerce work for a specialty tennis retail catalog.",
+      problem:
+        "A specialty tennis catalog sat on an older Magento 2 line. It needed an upgrade without throwing away catalog data or turning into a generic fashion theme.",
+      constraint:
+        "Racket / tennis attributes, checkout-adjacent modules, and payments had to survive. This is platform work, not a weekend theme swap.",
+      result:
+        "The catalog stays on Magento 2. Upgrade, catalog, checkout, and payments were treated as one platform path instead of a redesign.",
       stack: ["Magento 2", "PHP", "MySQL"],
       highlights: [
-        "Magento 2 platform work spanning catalog, checkout-adjacent modules, and payments.",
-        "Upgrade path from an older Magento 2 line without throwing away catalog data.",
-        "Retail-specific modules for a racket / tennis catalog, not a generic fashion theme.",
+        "Upgraded Magento 2 without discarding the tennis catalog.",
+        "Kept retail-specific modules for rackets and tennis SKUs instead of forcing a fashion theme.",
+        "Carried catalog, checkout-adjacent work, and payments through the same upgrade path.",
       ],
       featured: false,
       caseStudy: true,
@@ -314,10 +326,6 @@ export const profile = {
         { from: "Storefront", to: "Magento 2" },
         { from: "Magento 2", to: "Catalog · checkout · payments" },
         { from: "Magento 2", to: "MySQL" },
-      ],
-      outcomes: [
-        "Specialty retail catalog stays on Magento 2 instead of a one-off CMS.",
-        "Upgrade work is treated as platform work, not a weekend theme swap.",
       ],
     },
     {
@@ -327,11 +335,17 @@ export const profile = {
       domain: "GCC retail",
       summary:
         "Adobe Commerce (Enterprise) storefront work for a GCC retail catalog.",
+      problem:
+        "A Kuwait retail catalog needed Magento features Community Edition would not hold — attributes, checkout, and operational EE paths.",
+      constraint:
+        "GCC retail ops. Customizations had to stay in the Enterprise tree, not a CE stretch with plugins piled on top.",
+      result:
+        "The storefront runs on Adobe Commerce EE. Catalog, checkout, and deploys stay in that tree instead of being backported to CE.",
       stack: ["Magento EE", "PHP", "MySQL"],
       highlights: [
-        "Enterprise Edition Magento for a Kuwait retail operation.",
-        "Catalog, checkout, and operational Magento customizations.",
-        "EE features used where Community Edition would not hold a GCC catalog.",
+        "Used Enterprise Edition where CE would not hold a GCC catalog.",
+        "Customized catalog, checkout, and operational Magento paths inside EE.",
+        "Kept attributes and deploys in the EE tree instead of a plugin pile on CE.",
       ],
       featured: false,
       caseStudy: true,
@@ -339,10 +353,6 @@ export const profile = {
         { from: "Storefront", to: "Adobe Commerce EE" },
         { from: "Magento EE", to: "Catalog · checkout customizations" },
         { from: "Magento EE", to: "MySQL" },
-      ],
-      outcomes: [
-        "A GCC retail catalog on Enterprise Magento rather than a CE stretch.",
-        "Operational Magento work (attributes, checkout, deploys) stays in the EE tree.",
       ],
     },
     {
@@ -352,11 +362,17 @@ export const profile = {
       domain: "Commerce",
       summary:
         "Magento Community Edition multi-store setup with deploy and database operations.",
+      problem:
+        "More than one storefront needed to run on one Magento CE install. Bring-up and database steps lived in chat, not in scripts.",
+      constraint:
+        "Shared MySQL. Nginx in front. Each store had to be reproducible locally without cloning the whole machine.",
+      result:
+        "Multi-store Magento CE with deploy and database scripts written down. New storefronts are configuration, not a second install.",
       stack: ["Magento 2", "MySQL", "Nginx"],
       highlights: [
-        "Community Edition Magento stores with local deploy tooling.",
-        "Multi-store Magento rather than a single website clone.",
-        "MySQL and deploy scripts so stores can be reproduced locally.",
+        "Set up Magento CE as multi-store instead of copying one website.",
+        "Wrote MySQL and deploy scripts so stores can be reproduced locally.",
+        "Put Nginx and local tooling in the same bring-up path.",
       ],
       featured: false,
       caseStudy: true,
@@ -364,10 +380,6 @@ export const profile = {
         { from: "Storefronts", to: "Magento 2 multi-store" },
         { from: "Magento 2", to: "Shared MySQL" },
         { from: "Ops", to: "Nginx · deploy scripts" },
-      ],
-      outcomes: [
-        "More than one storefront on one Magento CE install.",
-        "Deploy and database steps written down instead of living in chat history.",
       ],
     },
     {
@@ -377,11 +389,17 @@ export const profile = {
       domain: "Payments",
       summary:
         "Magento 2 payment module for TalyPay BNPL — checkout, webhooks, and Magento payment APIs.",
+      problem:
+        "Buy-now-pay-later had to sit in Magento checkout as a real payment method. A hosted redirect or a CMS block would not keep order status honest.",
+      constraint:
+        "Magento payment APIs, observers, and webhooks. When TalyPay authorizes or fails, Magento order state has to move with it — and failed auths have to be traceable.",
+      result:
+        "TalyPay is a Magento 2 payment method: checkout, observers, Web API, logging. Webhooks keep Magento in line with TalyPay instead of leaving orders stuck.",
       stack: ["Magento 2", "PHP", "Webhooks"],
       highlights: [
-        "Custom Magento 2 payment method: checkout, observers, and Web API.",
-        "Buy-now-pay-later integration rather than a hosted redirect-only plugin.",
-        "Logging and Magento payment APIs so failed authorizations can be traced.",
+        "Implemented BNPL as a Magento payment method, not a redirect plugin.",
+        "Used observers and Magento payment APIs so order status follows TalyPay.",
+        "Added logging so failed authorizations can be traced instead of guessed.",
       ],
       featured: false,
       caseStudy: true,
@@ -389,10 +407,6 @@ export const profile = {
         { from: "Checkout", to: "TalyPay Magento module" },
         { from: "Magento 2", to: "TalyPay API" },
         { from: "TalyPay", to: "Webhooks · Magento order state" },
-      ],
-      outcomes: [
-        "BNPL sits in Magento as a real payment method, not a CMS block.",
-        "Webhook and observer paths keep Magento order status in line with TalyPay.",
       ],
     },
     {
@@ -402,6 +416,12 @@ export const profile = {
       domain: "Mobile",
       summary:
         "Android + Node.js stack for live group travel coordination — sockets, location, and queues.",
+      problem:
+        "Group travel coordination needed live location and group state. Polling a REST list, or dumping it into chat, was too slow and too noisy.",
+      constraint:
+        "Kotlin on the phone, sockets on the backend, mixed stores (PostgreSQL, MongoDB, Redis), and queues. The mobile app had to talk to a full stack locally, not a mocked API.",
+      result:
+        "Android streams location over Socket.IO. Node owns group state with Postgres, Mongo, Redis, and RabbitMQ. Docker Compose boots the backend the app actually uses.",
       stack: [
         "Kotlin",
         "Node.js",
@@ -412,9 +432,9 @@ export const profile = {
         "RabbitMQ",
       ],
       highlights: [
-        "Kotlin Android app with Retrofit, Room, Socket.IO, and a location foreground service.",
-        "Node backend with PostgreSQL, MongoDB, Redis, RabbitMQ, and Docker Compose.",
-        "Realtime location and group state instead of polling a REST list.",
+        "Shipped a Kotlin app with Retrofit, Room, Socket.IO, and a location foreground service.",
+        "Replaced REST polling with live sockets for location and group state.",
+        "Ran PostgreSQL, MongoDB, Redis, and RabbitMQ behind Node in Docker Compose so local matches the stack.",
       ],
       featured: false,
       caseStudy: true,
@@ -422,10 +442,6 @@ export const profile = {
         { from: "Android (Kotlin)", to: "Node.js API · Socket.IO" },
         { from: "Node.js", to: "PostgreSQL · MongoDB · Redis" },
         { from: "Node.js", to: "RabbitMQ" },
-      ],
-      outcomes: [
-        "Group travel coordination with live sockets, not a chat dump.",
-        "A Docker Compose backend so the mobile app can talk to a full stack locally.",
       ],
     },
   ],

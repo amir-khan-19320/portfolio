@@ -23,11 +23,14 @@ function FeaturedRow({
           {project.title}
         </h3>
         <p className="mt-4 leading-relaxed text-muted">{project.summary}</p>
-        <ul className="mt-5 space-y-2 text-sm text-muted">
-          {project.highlights.slice(0, 2).map((item) => (
-            <li key={item}>• {item}</li>
-          ))}
-        </ul>
+        <p className="mt-5 text-sm leading-relaxed text-muted">
+          <span className="font-medium text-foreground">Problem. </span>
+          {project.problem}
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          <span className="font-medium text-foreground">Result. </span>
+          {project.result}
+        </p>
         <Link
           href={`/work/${project.slug}/`}
           className="btn-glow mt-6 inline-flex h-11 items-center rounded-md px-6 text-sm tracking-wide"
@@ -37,16 +40,12 @@ function FeaturedRow({
       </div>
       <div className="glow-card rounded-xl p-8">
         <p className="text-sm uppercase tracking-[0.2em] text-accent">
-          {project.domain}
+          Constraint
         </p>
-        <p className="mt-4 text-sm leading-relaxed text-muted">
+        <p className="mt-4 leading-relaxed text-muted">{project.constraint}</p>
+        <p className="mt-6 text-sm leading-relaxed text-muted">
           {project.stack.join(" · ")}
         </p>
-        <ul className="mt-5 space-y-2 text-sm text-muted">
-          {project.highlights.slice(2).map((item) => (
-            <li key={item}>• {item}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ export function JsonLd() {
       "@type": "ListItem",
       position: index + 1,
       name: project.title,
-      description: project.summary,
+      description: `${project.problem} ${project.result}`,
       url: project.caseStudy
         ? `${siteUrl}/work/${project.slug}/`
         : `${siteUrl}/#work`,

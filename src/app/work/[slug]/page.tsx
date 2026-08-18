@@ -27,7 +27,7 @@ export async function generateMetadata({
     return { title: "Not found" };
   }
 
-  const description = `${project.title} — ${project.tagline}. ${project.summary} Stack: ${project.stack.join(", ")}.`;
+  const description = `${project.title} — ${project.tagline}. ${project.problem} ${project.result} Stack: ${project.stack.join(", ")}.`;
 
   return {
     title: `${project.title} | ${project.domain} case study`,
@@ -54,6 +54,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
   }
 
   const { prev, next } = getAdjacentProjects(project.slug);
+
+  const story = [
+    { label: "Problem", body: project.problem },
+    { label: "Constraint", body: project.constraint },
+    { label: "Result", body: project.result },
+  ];
 
   return (
     <main id="main" className="px-5 pb-20 pt-10 sm:px-10 sm:pb-24 sm:pt-16">
@@ -86,11 +92,26 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </ul>
         </FadeIn>
 
-        <FadeIn delay={0.08} className="mt-16">
+        <FadeIn delay={0.06} className="mt-14">
+          <div className="grid gap-4 md:grid-cols-3">
+            {story.map((item) => (
+              <article key={item.label} className="glow-card rounded-xl p-6 sm:p-7">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                  {item.label}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-foreground">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.1} className="mt-16">
           <h2 className="font-serif text-3xl tracking-tight text-foreground">
-            Highlights
+            What I did
           </h2>
-          <ul className="mt-6 max-w-2xl space-y-3 text-base leading-relaxed text-muted">
+          <ul className="mt-6 max-w-3xl space-y-3 text-base leading-relaxed text-muted">
             {project.highlights.map((item) => (
               <li key={item} className="flex gap-3">
                 <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
@@ -101,10 +122,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </FadeIn>
 
         {"modules" in project && project.modules ? (
-          <FadeIn delay={0.1} className="mt-16">
+          <FadeIn delay={0.12} className="mt-16">
             <h2 className="font-serif text-3xl tracking-tight text-foreground">
-              Modules
+              Magento modules
             </h2>
+            <p className="mt-3 max-w-2xl text-sm text-muted">
+              Marketplace behavior stayed in modules instead of Magento core.
+            </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {project.modules.map((item) => (
                 <li
@@ -119,11 +143,15 @@ export default async function CaseStudyPage({ params }: PageProps) {
         ) : null}
 
         {"architecture" in project && project.architecture ? (
-          <FadeIn delay={0.12} className="mt-16">
+          <FadeIn delay={0.14} className="mt-16">
             <h2 className="font-serif text-3xl tracking-tight text-foreground">
-              Architecture
+              How it was wired
             </h2>
-            <ol className="mt-6 max-w-2xl divide-y divide-border overflow-hidden rounded-3xl border border-border bg-card shadow-[0_18px_40px_-28px_rgba(15,23,42,0.16)]">
+            <p className="mt-3 max-w-2xl text-sm text-muted">
+              The path after the constraint was locked — not the story, just the
+              plumbing.
+            </p>
+            <ol className="mt-6 max-w-2xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
               {project.architecture.map((edge) => (
                 <li
                   key={`${edge.from}-${edge.to}`}
@@ -138,23 +166,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </FadeIn>
         ) : null}
 
-        {"outcomes" in project && project.outcomes ? (
-          <FadeIn delay={0.16} className="mt-16">
-            <h2 className="font-serif text-3xl tracking-tight text-foreground">
-              Outcomes
-            </h2>
-            <ul className="mt-6 max-w-2xl space-y-3 text-base leading-relaxed text-muted">
-              {project.outcomes.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
-        ) : null}
-
-        <FadeIn delay={0.2} className="mt-16 border-t border-border pt-8">
+        <FadeIn delay={0.18} className="mt-16 border-t border-border pt-8">
           <p className="text-sm text-muted">
             Built in the same production stack {profile.name} ships at{" "}
             {profile.experience[0].company}.
