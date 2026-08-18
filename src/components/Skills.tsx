@@ -27,7 +27,7 @@ export function Skills() {
       <div className="grid gap-6 sm:grid-cols-2">
         {services.map((service, index) => (
           <FadeIn key={service.title} delay={index * 0.05}>
-            <article className="glow-card h-full rounded-xl p-8">
+            <article className="glow-card h-full rounded-xl p-6 sm:p-8">
               <p className="font-serif text-2xl tracking-tight text-foreground">
                 {service.title}
               </p>

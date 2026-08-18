@@ -56,7 +56,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const { prev, next } = getAdjacentProjects(project.slug);
 
   return (
-    <main id="main" className="px-6 pb-24 pt-12 sm:px-10 sm:pt-16">
+    <main id="main" className="px-5 pb-20 pt-10 sm:px-10 sm:pb-24 sm:pt-16">
       <div className="mx-auto w-full max-w-6xl">
         <FadeIn>
           <Link
@@ -68,7 +68,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
             Case study · {project.tagline}
           </p>
-          <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-7xl">
+          <h1 className="mt-4 font-serif text-4xl leading-[1.05] tracking-tight text-foreground sm:text-7xl">
             {project.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">

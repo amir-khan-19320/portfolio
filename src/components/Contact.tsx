@@ -4,15 +4,15 @@ import { LinkedInIcon, MailIcon, PhoneIcon } from "./LinkedInIcon";
 
 export function Contact() {
   return (
-    <section id="contact" className="relative scroll-mt-24 px-6 py-20 sm:px-10 sm:py-24">
+    <section id="contact" className="relative scroll-mt-24 px-5 py-14 sm:px-10 sm:py-24">
       <FadeIn>
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm sm:p-12">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-12">
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
                 Contact
               </p>
-              <h2 className="mt-3 font-serif text-4xl text-foreground sm:text-5xl">
+              <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-5xl">
                 Let’s talk
               </h2>
               <p className="mt-4 max-w-md text-muted">
@@ -60,17 +60,17 @@ export function Contact() {
                 Open mail or LinkedIn and I will reply. Resume is a one-page PDF
                 of the same work shown here.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href={`mailto:${profile.email}?subject=Hire%20${encodeURIComponent(profile.name)}`}
-                  className="btn-glow inline-flex h-11 items-center rounded-md px-6 text-sm tracking-wide"
+                  className="btn-glow inline-flex h-11 items-center justify-center rounded-md px-6 text-sm tracking-wide"
                 >
                   Send email
                 </a>
                 <a
                   href={withBase(profile.resume)}
                   download="Amir_Khan_Resume.pdf"
-                  className="inline-flex h-11 items-center rounded-md border border-border bg-card px-6 text-sm tracking-wide transition hover:border-accent hover:text-accent"
+                  className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-card px-6 text-sm tracking-wide transition hover:border-accent hover:text-accent"
                 >
                   Download resume
                 </a>
@@ -78,7 +78,7 @@ export function Contact() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 items-center rounded-md border border-border bg-card px-6 text-sm tracking-wide transition hover:border-accent hover:text-accent"
+                  className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-card px-6 text-sm tracking-wide transition hover:border-accent hover:text-accent"
                 >
                   LinkedIn
                 </a>

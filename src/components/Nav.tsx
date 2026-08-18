@@ -30,7 +30,7 @@ export function Nav() {
           className="flex items-center gap-3 transition-opacity hover:opacity-90"
         >
           <BrandLogo size={42} priority />
-          <span className="hidden font-serif text-lg tracking-tight text-foreground sm:inline">
+          <span className="font-serif text-base tracking-tight text-foreground sm:text-lg">
             {profile.name}
           </span>
         </Link>

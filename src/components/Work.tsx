@@ -19,7 +19,7 @@ function FeaturedRow({
         <p className="text-sm uppercase tracking-[0.2em] text-accent">
           {project.tagline}
         </p>
-        <h3 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+        <h3 className="mt-3 font-serif text-2xl text-foreground sm:text-4xl">
           {project.title}
         </h3>
         <p className="mt-4 leading-relaxed text-muted">{project.summary}</p>
@@ -66,7 +66,7 @@ export function Work() {
         ))}
       </div>
       <FadeIn className="mt-16">
-        <h3 className="font-serif text-3xl text-foreground">More projects</h3>
+        <h3 className="font-serif text-2xl text-foreground sm:text-3xl">More projects</h3>
         <p className="mt-2 max-w-2xl text-muted">
           Magento stores, OMS, payments, GCC retail, and a realtime travel stack.
         </p>

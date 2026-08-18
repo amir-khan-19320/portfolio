@@ -14,7 +14,7 @@ export function Experience() {
             />
             <FadeIn delay={index * 0.06}>
               <p className="text-sm font-medium text-accent">{job.period}</p>
-              <h3 className="mt-2 font-serif text-3xl tracking-tight text-foreground">
+              <h3 className="mt-2 font-serif text-2xl tracking-tight text-foreground sm:text-3xl">
                 {job.role}
               </h3>
               <p className="mt-1 text-muted">

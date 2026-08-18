@@ -15,95 +15,141 @@
       body {
         margin: 0;
         padding: 0;
-        background: #fff;
-        color: #1b2238;
+        background: #f6f4ef;
+        color: #1c1917;
         font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
         font-size: 10pt;
         line-height: 1.65;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.01em;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
       .page {
         width: 210mm;
+        min-height: 297mm;
+        background: #f6f4ef;
       }
       header {
-        background: #0b0e21;
-        color: #f4f7ff;
-        padding: 14mm 16mm 12mm;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12mm;
+        padding: 11mm 16mm 10mm;
+        background: #f6f4ef;
+        border-bottom: 1px solid rgba(28, 25, 23, 0.12);
       }
-      header .rule {
-        height: 3px;
-        width: 48mm;
-        background: linear-gradient(90deg, #00d2ff, #9d50bb);
-        margin: 10px 0 12px;
+      .identity {
+        flex: 1;
+        min-width: 0;
+      }
+      .eyebrow {
+        margin: 0 0 2.5mm;
+        color: #0f6f7c;
+        font-size: 8pt;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
       }
       h1 {
         margin: 0;
+        font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
         font-size: 28pt;
-        letter-spacing: 0.16em;
         font-weight: 700;
-        line-height: 1.15;
+        letter-spacing: -0.02em;
+        line-height: 1.08;
+        color: #1c1917;
+      }
+      header .rule {
+        height: 3px;
+        width: 36mm;
+        background: #0f6f7c;
+        margin: 4mm 0 4mm;
       }
       .title {
         margin: 0;
-        color: #00d2ff;
+        color: #145869;
         font-size: 10.5pt;
-        letter-spacing: 0.12em;
-        line-height: 1.5;
+        letter-spacing: 0.04em;
+        line-height: 1.45;
       }
       .meta {
-        margin-top: 10px;
-        color: #c9d0e8;
-        font-size: 9.2pt;
-        letter-spacing: 0.04em;
+        margin-top: 4mm;
+        color: #57534e;
+        font-size: 9pt;
         line-height: 1.7;
       }
       .meta a {
-        color: #c9d0e8;
+        color: #57534e;
         text-decoration: none;
       }
+      .photo {
+        position: relative;
+        flex: 0 0 38mm;
+        width: 38mm;
+        height: 38mm;
+      }
+      .photo::after {
+        content: "";
+        position: absolute;
+        right: -3mm;
+        bottom: -3mm;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #0f6f7c;
+        border-radius: 8px;
+        z-index: 0;
+      }
+      .photo img {
+        position: relative;
+        z-index: 1;
+        width: 38mm;
+        height: 38mm;
+        object-fit: cover;
+        object-position: 50% 12%;
+        border-radius: 8px;
+        background: #ffffff;
+        display: block;
+      }
       main {
-        padding: 9mm 16mm 10mm;
+        padding: 8mm 16mm 10mm;
       }
       h2 {
-        margin: 7mm 0 3.5mm;
-        font-size: 8.6pt;
-        letter-spacing: 0.28em;
+        margin: 6.5mm 0 3.2mm;
+        font-size: 8.4pt;
+        letter-spacing: 0.22em;
         line-height: 1.4;
         text-transform: uppercase;
-        color: #0b0e21;
-        border-bottom: 1.5px solid #00d2ff;
-        padding-bottom: 2.2mm;
+        color: #1c1917;
+        border-bottom: 1.5px solid #0f6f7c;
+        padding-bottom: 2mm;
       }
       main > h2:first-child {
         margin-top: 0;
       }
       p,
       ul {
-        margin: 0 0 3.2mm;
+        margin: 0 0 3mm;
       }
       .skills {
-        color: #2a3148;
+        color: #57534e;
         line-height: 1.75;
-        letter-spacing: 0.025em;
       }
       .skills b {
-        color: #0b0e21;
-        letter-spacing: 0.04em;
+        color: #1c1917;
       }
       .when {
         white-space: nowrap;
-        color: #4b5568;
+        color: #57534e;
         font-size: 9.2pt;
-        letter-spacing: 0.06em;
       }
 
       .journey {
-        background: #0b0e21;
-        color: #c9d0e8;
-        border-radius: 12px;
-        padding: 9mm 9mm 8mm 10mm;
+        background: #ffffff;
+        color: #1c1917;
+        border: 1px solid rgba(28, 25, 23, 0.12);
+        border-radius: 10px;
+        box-shadow: 0 1px 2px rgba(28, 25, 23, 0.04),
+          0 10px 28px rgba(28, 25, 23, 0.05);
+        padding: 7mm 8mm 7mm 9mm;
         margin: 1mm 0 2mm;
         position: relative;
         overflow: hidden;
@@ -114,47 +160,45 @@
         inset: 0;
         background-image: url("../public/ecommerce-icons.svg");
         background-size: 220px;
-        opacity: 0.08;
+        opacity: 0.05;
         pointer-events: none;
       }
       .journey-inner {
         position: relative;
         z-index: 1;
       }
-      .journey .eyebrow {
-        margin: 0 0 2.5mm;
-        color: #00d2ff;
+      .journey .section-kicker {
+        margin: 0 0 2mm;
+        color: #0f6f7c;
         font-size: 8pt;
-        letter-spacing: 0.32em;
-        line-height: 1.4;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
       }
       .journey .roles-title {
-        margin: 0 0 4mm;
+        margin: 0 0 3.5mm;
         font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
-        font-size: 22pt;
-        color: #f4f7ff;
-        letter-spacing: 0.08em;
+        font-size: 18pt;
+        color: #1c1917;
+        letter-spacing: -0.02em;
         line-height: 1.15;
       }
       .journey .company-line {
         display: flex;
         justify-content: space-between;
         gap: 8mm;
-        color: #9aa3c7;
+        color: #57534e;
         font-size: 9.2pt;
-        letter-spacing: 0.05em;
         line-height: 1.5;
-        margin: 0 0 7mm;
+        margin: 0 0 6mm;
       }
       .timeline {
-        border-left: 2px solid rgba(0, 210, 255, 0.28);
+        border-left: 2px solid rgba(15, 111, 124, 0.28);
         margin-left: 2mm;
         padding-left: 8mm;
       }
       .role {
         position: relative;
-        padding-bottom: 9mm;
+        padding-bottom: 7mm;
         break-inside: avoid;
         page-break-inside: avoid;
       }
@@ -169,31 +213,31 @@
         width: 11px;
         height: 11px;
         border-radius: 50%;
-        background: #00d2ff;
-        box-shadow: 0 0 0 4px #0b0e21;
+        background: #0f6f7c;
+        box-shadow: 0 0 0 4px #ffffff;
       }
       .period {
         margin: 0;
-        color: #00d2ff;
-        font-size: 8.6pt;
+        color: #0f6f7c;
+        font-size: 8.4pt;
         font-weight: 600;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.12em;
         line-height: 1.45;
+        text-transform: uppercase;
       }
       .role h3 {
-        margin: 2.2mm 0 1.4mm;
+        margin: 1.8mm 0 1.2mm;
         font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
-        font-size: 16.5pt;
+        font-size: 14.5pt;
         font-weight: 600;
-        color: #f4f7ff;
-        letter-spacing: 0.02em;
+        color: #1c1917;
+        letter-spacing: -0.01em;
         line-height: 1.25;
       }
       .role .co {
-        margin: 0 0 3.2mm;
-        color: #9aa3c7;
-        font-size: 9.2pt;
-        letter-spacing: 0.05em;
+        margin: 0 0 2.8mm;
+        color: #57534e;
+        font-size: 9pt;
         line-height: 1.5;
       }
       .role ul {
@@ -204,11 +248,10 @@
       .role li {
         position: relative;
         padding-left: 5.5mm;
-        margin-bottom: 2.4mm;
-        color: #c9d0e8;
-        font-size: 9.4pt;
-        line-height: 1.65;
-        letter-spacing: 0.03em;
+        margin-bottom: 2.2mm;
+        color: #1c1917;
+        font-size: 9.3pt;
+        line-height: 1.62;
       }
       .role li:last-child {
         margin-bottom: 0;
@@ -217,39 +260,37 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 2.6mm;
+        top: 2.5mm;
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background: #00d2ff;
+        background: #0f6f7c;
       }
 
       .project {
-        margin-bottom: 5mm;
+        margin-bottom: 4.2mm;
         break-inside: avoid;
         page-break-inside: avoid;
       }
       .project h3 {
-        margin: 0 0 1.6mm;
-        font-size: 12pt;
-        letter-spacing: 0.02em;
+        margin: 0 0 1.4mm;
+        font-size: 11.5pt;
+        letter-spacing: -0.01em;
         line-height: 1.35;
       }
       .project h3 span {
         font-weight: 400;
-        color: #4b5568;
-        font-size: 9.4pt;
-        letter-spacing: 0.04em;
+        color: #57534e;
+        font-size: 9.3pt;
       }
       .project p {
-        line-height: 1.7;
-        letter-spacing: 0.028em;
+        color: #57534e;
+        line-height: 1.65;
         margin: 0;
       }
       .more {
-        color: #2a3148;
-        line-height: 1.7;
-        letter-spacing: 0.028em;
+        color: #57534e;
+        line-height: 1.65;
         margin-bottom: 0;
       }
       .edu {
@@ -257,38 +298,45 @@
         justify-content: space-between;
         align-items: baseline;
         gap: 8mm;
-        margin-bottom: 4.5mm;
+        margin-bottom: 3.8mm;
         line-height: 1.55;
-        letter-spacing: 0.03em;
       }
       .edu:last-child {
         margin-bottom: 0;
       }
       .edu b {
         display: block;
-        letter-spacing: 0.04em;
-        margin-bottom: 1mm;
+        margin-bottom: 0.8mm;
       }
     </style>
   </head>
   <body>
     <div class="page">
       <header>
-        <h1>AMIR KHAN</h1>
-        <div class="rule"></div>
-        <p class="title">
-          Team Lead · Magento 2.4 · Laravel · OMS · Adobe Commerce Certified
-        </p>
-        <p class="meta">
-          Mumbai, India ·
-          <a href="tel:+919004547289">+91 90045 47289</a> ·
-          <a href="tel:+919967796255">+91 99677 96255</a><br />
-          <a href="mailto:khanamir19320@gmail.com">khanamir19320@gmail.com</a>
-          ·
-          <a href="https://www.linkedin.com/in/amir-0319-khan"
-            >linkedin.com/in/amir-0319-khan</a
-          >
-        </p>
+        <div class="identity">
+          <p class="eyebrow">Mumbai · Adobe Commerce certified</p>
+          <h1>Amir Khan</h1>
+          <div class="rule"></div>
+          <p class="title">
+            Team Lead · Magento 2.4 · Laravel · OMS · Adobe Commerce Certified
+          </p>
+          <p class="meta">
+            Mumbai, India ·
+            <a href="tel:+919004547289">+91 90045 47289</a> ·
+            <a href="tel:+919967796255">+91 99677 96255</a><br />
+            <a href="mailto:khanamir19320@gmail.com">khanamir19320@gmail.com</a>
+            ·
+            <a href="https://www.linkedin.com/in/amir-0319-khan"
+              >linkedin.com/in/amir-0319-khan</a
+            >
+          </p>
+        </div>
+        <div class="photo">
+          <img
+            src="../public/amir-khan-portrait.png"
+            alt="Amir Khan, Team Lead"
+          />
+        </div>
       </header>
       <main>
         <h2>Summary</h2>
@@ -315,8 +363,8 @@
         <h2>Experience</h2>
         <div class="journey">
           <div class="journey-inner">
-            <p class="eyebrow">05 — Experience</p>
-            <p class="roles-title">ROLES.</p>
+            <p class="section-kicker">Experience</p>
+            <p class="roles-title">Roles</p>
             <p class="company-line">
               <span>TechSevin Solution LLP · Mumbai, India</span>
               <span>Feb 2022 – Present</span>
