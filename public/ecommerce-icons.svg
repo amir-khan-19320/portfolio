@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" fill="none">
+    <g stroke="#145869" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.35">
+    <!-- cart -->
+    <g transform="translate(28 36)">
+      <circle cx="9" cy="26" r="2.2"/>
+      <circle cx="21" cy="26" r="2.2"/>
+      <path d="M2 3h4l3.2 14.5h13.2l2.6-8.5H8.2"/>
+    </g>
+    <!-- bag -->
+    <g transform="translate(168 24)">
+      <path d="M6 10h20l-1.6 18H7.6L6 10Z"/>
+      <path d="M12 10V8a4 4 0 0 1 8 0v2"/>
+    </g>
+    <!-- package -->
+    <g transform="translate(292 48)">
+      <path d="M4 10 16 4l12 6v16l-12 6-12-6V10Z"/>
+      <path d="M4 10l12 6 12-6M16 16v16"/>
+    </g>
+    <!-- card -->
+    <g transform="translate(84 150)">
+      <rect x="2" y="6" width="28" height="18" rx="2"/>
+      <path d="M2 12h28"/>
+      <path d="M7 20h8"/>
+    </g>
+    <!-- tag -->
+    <g transform="translate(220 156)">
+      <path d="M4 14 14 4h12v12L16 26 4 14Z"/>
+      <circle cx="21" cy="9" r="1.6"/>
+    </g>
+    <!-- store -->
+    <g transform="translate(40 252)">
+      <path d="M4 14V28h24V14"/>
+      <path d="M2 14 8 6h16l6 8"/>
+      <path d="M14 28v-8h8v8"/>
+    </g>
+    <!-- truck -->
+    <g transform="translate(176 250)">
+      <path d="M2 18V8h16v16H8"/>
+      <path d="M18 14h8l4 6v4h-6"/>
+      <circle cx="8" cy="24" r="2.2"/>
+      <circle cx="24" cy="24" r="2.2"/>
+    </g>
+    <!-- barcode -->
+    <g transform="translate(292 248)">
+      <path d="M4 8v16M8 8v16M11 8v16M16 8v16M19 8v16M24 8v16M28 8v16"/>
+    </g>
+  </g>
+</svg>

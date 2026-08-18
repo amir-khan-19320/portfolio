@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Amir Khan — Resume</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        color: #1b2238;
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        width: 210mm;
+      }
+      header {
+        background: #0b0e21;
+        color: #f4f7ff;
+        padding: 14mm 16mm 12mm;
+      }
+      header .rule {
+        height: 3px;
+        width: 48mm;
+        background: linear-gradient(90deg, #00d2ff, #9d50bb);
+        margin: 10px 0 12px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 28pt;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      .title {
+        margin: 0;
+        color: #00d2ff;
+        font-size: 10.5pt;
+        letter-spacing: 0.12em;
+        line-height: 1.5;
+      }
+      .meta {
+        margin-top: 10px;
+        color: #c9d0e8;
+        font-size: 9.2pt;
+        letter-spacing: 0.04em;
+        line-height: 1.7;
+      }
+      .meta a {
+        color: #c9d0e8;
+        text-decoration: none;
+      }
+      main {
+        padding: 9mm 16mm 10mm;
+      }
+      h2 {
+        margin: 7mm 0 3.5mm;
+        font-size: 8.6pt;
+        letter-spacing: 0.28em;
+        line-height: 1.4;
+        text-transform: uppercase;
+        color: #0b0e21;
+        border-bottom: 1.5px solid #00d2ff;
+        padding-bottom: 2.2mm;
+      }
+      main > h2:first-child {
+        margin-top: 0;
+      }
+      p,
+      ul {
+        margin: 0 0 3.2mm;
+      }
+      .skills {
+        color: #2a3148;
+        line-height: 1.75;
+        letter-spacing: 0.025em;
+      }
+      .skills b {
+        color: #0b0e21;
+        letter-spacing: 0.04em;
+      }
+      .when {
+        white-space: nowrap;
+        color: #4b5568;
+        font-size: 9.2pt;
+        letter-spacing: 0.06em;
+      }
+
+      .journey {
+        background: #0b0e21;
+        color: #c9d0e8;
+        border-radius: 12px;
+        padding: 9mm 9mm 8mm 10mm;
+        margin: 1mm 0 2mm;
+        position: relative;
+        overflow: hidden;
+      }
+      .journey::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("../public/ecommerce-icons.svg");
+        background-size: 220px;
+        opacity: 0.08;
+        pointer-events: none;
+      }
+      .journey-inner {
+        position: relative;
+        z-index: 1;
+      }
+      .journey .eyebrow {
+        margin: 0 0 2.5mm;
+        color: #00d2ff;
+        font-size: 8pt;
+        letter-spacing: 0.32em;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+      .journey .roles-title {
+        margin: 0 0 4mm;
+        font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
+        font-size: 22pt;
+        color: #f4f7ff;
+        letter-spacing: 0.08em;
+        line-height: 1.15;
+      }
+      .journey .company-line {
+        display: flex;
+        justify-content: space-between;
+        gap: 8mm;
+        color: #9aa3c7;
+        font-size: 9.2pt;
+        letter-spacing: 0.05em;
+        line-height: 1.5;
+        margin: 0 0 7mm;
+      }
+      .timeline {
+        border-left: 2px solid rgba(0, 210, 255, 0.28);
+        margin-left: 2mm;
+        padding-left: 8mm;
+      }
+      .role {
+        position: relative;
+        padding-bottom: 9mm;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .role:last-child {
+        padding-bottom: 0;
+      }
+      .role::before {
+        content: "";
+        position: absolute;
+        left: -9.35mm;
+        top: 2mm;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #00d2ff;
+        box-shadow: 0 0 0 4px #0b0e21;
+      }
+      .period {
+        margin: 0;
+        color: #00d2ff;
+        font-size: 8.6pt;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        line-height: 1.45;
+      }
+      .role h3 {
+        margin: 2.2mm 0 1.4mm;
+        font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
+        font-size: 16.5pt;
+        font-weight: 600;
+        color: #f4f7ff;
+        letter-spacing: 0.02em;
+        line-height: 1.25;
+      }
+      .role .co {
+        margin: 0 0 3.2mm;
+        color: #9aa3c7;
+        font-size: 9.2pt;
+        letter-spacing: 0.05em;
+        line-height: 1.5;
+      }
+      .role ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .role li {
+        position: relative;
+        padding-left: 5.5mm;
+        margin-bottom: 2.4mm;
+        color: #c9d0e8;
+        font-size: 9.4pt;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+      .role li:last-child {
+        margin-bottom: 0;
+      }
+      .role li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 2.6mm;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #00d2ff;
+      }
+
+      .project {
+        margin-bottom: 5mm;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .project h3 {
+        margin: 0 0 1.6mm;
+        font-size: 12pt;
+        letter-spacing: 0.02em;
+        line-height: 1.35;
+      }
+      .project h3 span {
+        font-weight: 400;
+        color: #4b5568;
+        font-size: 9.4pt;
+        letter-spacing: 0.04em;
+      }
+      .project p {
+        line-height: 1.7;
+        letter-spacing: 0.028em;
+        margin: 0;
+      }
+      .more {
+        color: #2a3148;
+        line-height: 1.7;
+        letter-spacing: 0.028em;
+        margin-bottom: 0;
+      }
+      .edu {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8mm;
+        margin-bottom: 4.5mm;
+        line-height: 1.55;
+        letter-spacing: 0.03em;
+      }
+      .edu:last-child {
+        margin-bottom: 0;
+      }
+      .edu b {
+        display: block;
+        letter-spacing: 0.04em;
+        margin-bottom: 1mm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>AMIR KHAN</h1>
+        <div class="rule"></div>
+        <p class="title">
+          Team Lead · Magento 2.4 · Laravel · OMS · Adobe Commerce Certified
+        </p>
+        <p class="meta">
+          Mumbai, India ·
+          <a href="tel:+919004547289">+91 90045 47289</a> ·
+          <a href="tel:+919967796255">+91 99677 96255</a><br />
+          <a href="mailto:khanamir19320@gmail.com">khanamir19320@gmail.com</a>
+          ·
+          <a href="https://www.linkedin.com/in/amir-0319-khan"
+            >linkedin.com/in/amir-0319-khan</a
+          >
+        </p>
+      </header>
+      <main>
+        <h2>Summary</h2>
+        <p>
+          Adobe Commerce certified Magento and Laravel engineer with 3+ years of
+          production commerce work. Joined TechSevin Solution LLP as a fresher
+          in February 2022 and now lead BharatEmart, BharatEmart OMS, Alfa, and
+          TennisHub — technical design, code quality, and delivery.
+        </p>
+
+        <h2>Skills</h2>
+        <p class="skills">
+          <b>Commerce:</b> Magento 2.4, Adobe Commerce, GraphQL, custom modules,
+          multi-store ·
+          <b>Backend:</b> PHP, Laravel 12 / 10, REST / SOAP, JWT, queues / SQS ·
+          <b>Data &amp; search:</b> MySQL, PostgreSQL, MongoDB, Elasticsearch,
+          Algolia, Redis ·
+          <b>Ops:</b> Docker, Linux (Ubuntu), Nginx, AWS, Git, Composer ·
+          <b>Integrations:</b> Razorpay, ShipRocket, TalyPay BNPL, Twilio ·
+          <b>Frontend:</b> React, JavaScript, HTML5, CSS3 ·
+          <b>AI:</b> Cursor, Claude, Gemini, GitHub Copilot, Codex, ChatGPT
+        </p>
+
+        <h2>Experience</h2>
+        <div class="journey">
+          <div class="journey-inner">
+            <p class="eyebrow">05 — Experience</p>
+            <p class="roles-title">ROLES.</p>
+            <p class="company-line">
+              <span>TechSevin Solution LLP · Mumbai, India</span>
+              <span>Feb 2022 – Present</span>
+            </p>
+            <div class="timeline">
+              <div class="role">
+                <p class="period">Current</p>
+                <h3>Team Lead</h3>
+                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
+                <ul>
+                  <li>
+                    Lead three live projects — BharatEmart, OMS, and Alfa — plus
+                    TennisHub, from architecture through production.
+                  </li>
+                  <li>
+                    Own Magento 2.4 marketplace, Laravel OMS, search, logistics,
+                    and payment integrations for those catalogs.
+                  </li>
+                  <li>
+                    Review Magento and Laravel delivery, set technical
+                    direction, and debug production issues on Nginx, MySQL, and
+                    GraphQL paths.
+                  </li>
+                </ul>
+              </div>
+              <div class="role">
+                <p class="period">Grew into the role</p>
+                <h3>Magento Developer / Senior Backend Engineer</h3>
+                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
+                <ul>
+                  <li>
+                    Built and maintained Magento 2.4 and Laravel commerce
+                    systems for production catalogs and order flow.
+                  </li>
+                  <li>
+                    Took ownership of custom modules, GraphQL, ShipRocket,
+                    Razorpay, and OMS APIs.
+                  </li>
+                  <li>
+                    Debugged performance and production issues before moving
+                    into Team Lead.
+                  </li>
+                </ul>
+              </div>
+              <div class="role">
+                <p class="period">Started as a fresher</p>
+                <h3>Junior Magento Developer</h3>
+                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
+                <ul>
+                  <li>
+                    Joined TechSevin as a fresher and learned Magento 2, PHP,
+                    MySQL, and how production commerce actually ships.
+                  </li>
+                  <li>
+                    Supported catalog, checkout, and backend tickets that became
+                    the foundation for leading store and OMS work.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Selected work</h2>
+        <div class="project">
+          <h3>BharatEmart <span>— Magento 2.4 marketplace</span></h3>
+          <p>
+            GraphQL for catalog, checkout, vendors, RFQ, and returns. Custom
+            modules for OMS API, ShipRocket, split orders, OTP login, Razorpay
+            refunds, and homepage / GraphQL performance.
+          </p>
+        </div>
+        <div class="project">
+          <h3>BharatEmart OMS <span>— Laravel 10 order management</span></h3>
+          <p>
+            Dedicated order service with SQS FIFO queues, PDF invoices,
+            barcodes, and payment verification states — order lifecycle outside
+            Magento admin.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Alfa <span>— Magento 2 store</span></h3>
+          <p>
+            Docker Compose with SSL, Elasticsearch, Redis, and Nginx, plus
+            deploy scripts so Magento bring-up is repeatable.
+          </p>
+        </div>
+        <div class="project">
+          <h3>TennisHub <span>— Magento 2 specialty retail</span></h3>
+          <p>
+            Magento 2 upgrade and catalog, checkout, and payments work for a
+            tennis retail catalog.
+          </p>
+        </div>
+        <p class="more">
+          <b>Also shipped:</b> SwasthaOne (Laravel 12 healthcare API, split
+          PostgreSQL, Elasticsearch, Razorpay, Twilio); TalyPay BNPL Magento
+          payment module; Alessa Kuwait (Adobe Commerce EE); Khiara Magento
+          multi-store.
+        </p>
+
+        <h2>Education &amp; certification</h2>
+        <div class="edu">
+          <div>
+            <b>B.Sc. Information Technology</b>
+            Mumbai University
+          </div>
+          <span class="when">2021</span>
+        </div>
+        <div class="edu">
+          <div>
+            <b>Adobe Commerce Developer Certification</b>
+            Adobe
+          </div>
+          <span class="when">2023</span>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
