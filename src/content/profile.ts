@@ -466,7 +466,7 @@ export const profile = {
   education: [
     {
       school: "Mumbai University",
-      credential: "TYBSCIT — website development",
+      credential: "BSCIT — website development",
     },
   ],
   certifications: [
