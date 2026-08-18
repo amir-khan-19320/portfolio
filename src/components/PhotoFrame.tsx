@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { profile } from "@/content/profile";
+import { profile, withBase } from "@/content/profile";
 
 export function PhotoFrame({
   className = "",
@@ -16,7 +16,7 @@ export function PhotoFrame({
       />
       <div className="relative overflow-hidden rounded-md bg-card">
         <Image
-          src={profile.photo}
+          src={withBase(profile.photo)}
           alt={`${profile.name}, ${profile.role}`}
           width={size}
           height={size}

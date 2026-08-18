@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     phoneNumbers: profile.phones.map((phone) => `+91${phone}`),
     images: [
       {
-        url: profile.photo,
+        url: withBase(profile.photo),
         alt: `${profile.name}, ${profile.role}`,
       },
     ],
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: profile.seo.title,
     description: profile.seo.description,
-    images: [profile.photo],
+    images: [withBase(profile.photo)],
   },
   icons: {
     icon: [{ url: withBase("/ak-logo.png"), type: "image/png" }],

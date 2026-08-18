@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { profile } from "@/content/profile";
+import { profile, withBase } from "@/content/profile";
 
 export function BrandLogo({
   size = 44,
@@ -12,7 +12,7 @@ export function BrandLogo({
 }) {
   return (
     <Image
-      src={profile.logo}
+      src={withBase(profile.logo)}
       alt={`${profile.name} logo`}
       width={size}
       height={size}
