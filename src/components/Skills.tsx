@@ -37,7 +37,7 @@ export function Skills() {
         ))}
       </div>
       <div className="mt-12 flex flex-wrap justify-center gap-3">
-        {profile.accentLine.concat(["PHP", "React 19", "MySQL", "Docker"]).map((item) => (
+        {[...profile.accentLine, "PHP", "React 19", "MySQL", "Docker"].map((item) => (
           <span
             key={item}
             className="rounded-md border border-border px-4 py-2 text-sm text-foreground"
