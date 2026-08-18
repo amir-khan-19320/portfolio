@@ -68,13 +68,6 @@ export function Contact() {
                   Send email
                 </a>
                 <a
-                  href={withBase(profile.resume)}
-                  download="Amir_Khan_Resume.pdf"
-                  className="inline-flex h-11 items-center justify-center rounded-md border border-border bg-card px-6 text-sm tracking-wide transition hover:border-accent hover:text-accent"
-                >
-                  Download resume
-                </a>
-                <a
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -15,27 +15,33 @@
       body {
         margin: 0;
         padding: 0;
-        background: #f6f4ef;
+        background: #fff;
         color: #1c1917;
         font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
-        font-size: 10pt;
-        line-height: 1.65;
+        font-size: 9.6pt;
+        line-height: 1.48;
         letter-spacing: 0.01em;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      .page {
+      .sheet {
         width: 210mm;
-        min-height: 297mm;
+        height: 297mm;
+        overflow: hidden;
         background: #f6f4ef;
+        page-break-after: always;
+        break-after: page;
+      }
+      .sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
       }
       header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12mm;
-        padding: 11mm 16mm 10mm;
-        background: #f6f4ef;
+        gap: 10mm;
+        padding: 8mm 15mm 7mm;
         border-bottom: 1px solid rgba(28, 25, 23, 0.12);
       }
       .identity {
@@ -43,39 +49,38 @@
         min-width: 0;
       }
       .eyebrow {
-        margin: 0 0 2.5mm;
+        margin: 0 0 1.6mm;
         color: #0f6f7c;
-        font-size: 8pt;
+        font-size: 7.6pt;
         letter-spacing: 0.22em;
         text-transform: uppercase;
       }
       h1 {
         margin: 0;
         font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
-        font-size: 28pt;
+        font-size: 26pt;
         font-weight: 700;
         letter-spacing: -0.02em;
-        line-height: 1.08;
+        line-height: 1.05;
         color: #1c1917;
       }
       header .rule {
         height: 3px;
-        width: 36mm;
+        width: 32mm;
         background: #0f6f7c;
-        margin: 4mm 0 4mm;
+        margin: 3mm 0;
       }
       .title {
         margin: 0;
         color: #145869;
-        font-size: 10.5pt;
-        letter-spacing: 0.04em;
-        line-height: 1.45;
+        font-size: 10pt;
+        line-height: 1.4;
       }
       .meta {
-        margin-top: 4mm;
+        margin-top: 3mm;
         color: #57534e;
-        font-size: 9pt;
-        line-height: 1.7;
+        font-size: 8.7pt;
+        line-height: 1.55;
       }
       .meta a {
         color: #57534e;
@@ -83,74 +88,111 @@
       }
       .photo {
         position: relative;
-        flex: 0 0 38mm;
-        width: 38mm;
-        height: 38mm;
+        flex: 0 0 34mm;
+        width: 34mm;
+        height: 34mm;
       }
       .photo::after {
         content: "";
         position: absolute;
-        right: -3mm;
-        bottom: -3mm;
+        right: -2.2mm;
+        bottom: -2.2mm;
         width: 100%;
         height: 100%;
         border: 2px solid #0f6f7c;
         border-radius: 8px;
-        z-index: 0;
       }
       .photo img {
         position: relative;
         z-index: 1;
-        width: 38mm;
-        height: 38mm;
+        width: 34mm;
+        height: 34mm;
         object-fit: cover;
         object-position: 50% 12%;
         border-radius: 8px;
-        background: #ffffff;
+        background: #fff;
         display: block;
       }
       main {
-        padding: 8mm 16mm 10mm;
+        padding: 5.5mm 15mm 7mm;
       }
       h2 {
-        margin: 6.5mm 0 3.2mm;
-        font-size: 8.4pt;
+        margin: 4.2mm 0 2mm;
+        font-size: 8pt;
         letter-spacing: 0.22em;
-        line-height: 1.4;
         text-transform: uppercase;
         color: #1c1917;
         border-bottom: 1.5px solid #0f6f7c;
-        padding-bottom: 2mm;
+        padding-bottom: 1.6mm;
       }
       main > h2:first-child {
         margin-top: 0;
       }
-      p,
-      ul {
-        margin: 0 0 3mm;
+      p {
+        margin: 0 0 2.2mm;
       }
-      .skills {
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.6mm 7mm;
+      }
+      .skill-row {
         color: #57534e;
-        line-height: 1.75;
+        font-size: 8.7pt;
+        line-height: 1.45;
+        margin: 0;
       }
-      .skills b {
+      .skill-row b {
         color: #1c1917;
       }
-      .when {
-        white-space: nowrap;
+      .project {
+        margin-bottom: 2.4mm;
+      }
+      .project h3 {
+        margin: 0 0 0.8mm;
+        font-size: 10.6pt;
+        line-height: 1.25;
+      }
+      .project h3 span {
+        font-weight: 400;
         color: #57534e;
-        font-size: 9.2pt;
+        font-size: 8.7pt;
+      }
+      .project p {
+        color: #57534e;
+        font-size: 8.9pt;
+        line-height: 1.45;
+        margin: 0;
+      }
+      .stack {
+        margin-top: 0.8mm;
+        color: #0f6f7c;
+        font-size: 8pt;
+      }
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8mm;
+        align-items: baseline;
+      }
+      .edu-row p {
+        margin: 0;
+        color: #57534e;
+        font-size: 9pt;
+        line-height: 1.45;
+      }
+      .edu-row b {
+        color: #1c1917;
       }
 
       .journey {
-        background: #ffffff;
-        color: #1c1917;
+        background: #fff;
         border: 1px solid rgba(28, 25, 23, 0.12);
         border-radius: 10px;
         box-shadow: 0 1px 2px rgba(28, 25, 23, 0.04),
-          0 10px 28px rgba(28, 25, 23, 0.05);
-        padding: 7mm 8mm 7mm 9mm;
-        margin: 1mm 0 2mm;
+          0 8px 22px rgba(28, 25, 23, 0.05);
+        padding: 5.2mm 7mm 5.2mm 7.5mm;
+        margin: 0 0 1mm;
         position: relative;
         overflow: hidden;
       }
@@ -167,40 +209,37 @@
         position: relative;
         z-index: 1;
       }
-      .journey .section-kicker {
-        margin: 0 0 2mm;
+      .section-kicker {
+        margin: 0 0 1.4mm;
         color: #0f6f7c;
-        font-size: 8pt;
+        font-size: 7.6pt;
         letter-spacing: 0.22em;
         text-transform: uppercase;
       }
-      .journey .roles-title {
-        margin: 0 0 3.5mm;
+      .roles-title {
+        margin: 0 0 2mm;
         font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
-        font-size: 18pt;
+        font-size: 17pt;
         color: #1c1917;
         letter-spacing: -0.02em;
-        line-height: 1.15;
+        line-height: 1.1;
       }
-      .journey .company-line {
+      .company-line {
         display: flex;
         justify-content: space-between;
         gap: 8mm;
         color: #57534e;
-        font-size: 9.2pt;
-        line-height: 1.5;
-        margin: 0 0 6mm;
+        font-size: 8.8pt;
+        margin: 0 0 3.8mm;
       }
       .timeline {
         border-left: 2px solid rgba(15, 111, 124, 0.28);
         margin-left: 2mm;
-        padding-left: 8mm;
+        padding-left: 7.5mm;
       }
       .role {
         position: relative;
-        padding-bottom: 7mm;
-        break-inside: avoid;
-        page-break-inside: avoid;
+        padding-bottom: 4.2mm;
       }
       .role:last-child {
         padding-bottom: 0;
@@ -208,37 +247,29 @@
       .role::before {
         content: "";
         position: absolute;
-        left: -9.35mm;
-        top: 2mm;
-        width: 11px;
-        height: 11px;
+        left: -8.85mm;
+        top: 1.8mm;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: #0f6f7c;
-        box-shadow: 0 0 0 4px #ffffff;
+        box-shadow: 0 0 0 4px #fff;
       }
       .period {
         margin: 0;
         color: #0f6f7c;
-        font-size: 8.4pt;
+        font-size: 7.8pt;
         font-weight: 600;
         letter-spacing: 0.12em;
-        line-height: 1.45;
         text-transform: uppercase;
       }
       .role h3 {
-        margin: 1.8mm 0 1.2mm;
+        margin: 1.1mm 0 1.2mm;
         font-family: "Liberation Serif", "Times New Roman", Georgia, serif;
-        font-size: 14.5pt;
+        font-size: 13pt;
         font-weight: 600;
         color: #1c1917;
-        letter-spacing: -0.01em;
-        line-height: 1.25;
-      }
-      .role .co {
-        margin: 0 0 2.8mm;
-        color: #57534e;
-        font-size: 9pt;
-        line-height: 1.5;
+        line-height: 1.2;
       }
       .role ul {
         list-style: none;
@@ -247,11 +278,10 @@
       }
       .role li {
         position: relative;
-        padding-left: 5.5mm;
-        margin-bottom: 2.2mm;
-        color: #1c1917;
-        font-size: 9.3pt;
-        line-height: 1.62;
+        padding-left: 5mm;
+        margin-bottom: 1.5mm;
+        font-size: 8.9pt;
+        line-height: 1.45;
       }
       .role li:last-child {
         margin-bottom: 0;
@@ -260,58 +290,46 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 2.5mm;
-        width: 5px;
-        height: 5px;
+        top: 2.1mm;
+        width: 4.5px;
+        height: 4.5px;
         border-radius: 50%;
         background: #0f6f7c;
       }
-
-      .project {
-        margin-bottom: 4.2mm;
-        break-inside: avoid;
-        page-break-inside: avoid;
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.8mm 7mm;
       }
-      .project h3 {
-        margin: 0 0 1.4mm;
-        font-size: 11.5pt;
-        letter-spacing: -0.01em;
-        line-height: 1.35;
-      }
-      .project h3 span {
-        font-weight: 400;
-        color: #57534e;
-        font-size: 9.3pt;
-      }
-      .project p {
-        color: #57534e;
-        line-height: 1.65;
-        margin: 0;
-      }
-      .more {
-        color: #57534e;
-        line-height: 1.65;
-        margin-bottom: 0;
-      }
-      .edu {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 8mm;
-        margin-bottom: 3.8mm;
-        line-height: 1.55;
-      }
-      .edu:last-child {
-        margin-bottom: 0;
-      }
-      .edu b {
+      .ai-item b {
         display: block;
-        margin-bottom: 0.8mm;
+        margin-bottom: 0.5mm;
+      }
+      .ai-item p {
+        margin: 0;
+        color: #57534e;
+        font-size: 8.7pt;
+        line-height: 1.42;
+      }
+      .strengths {
+        margin: 0;
+        padding-left: 4.2mm;
+        color: #57534e;
+        font-size: 8.9pt;
+        line-height: 1.45;
+      }
+      .strengths li {
+        margin-bottom: 1.4mm;
+      }
+      .more-work {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.4mm 7mm;
       }
     </style>
   </head>
   <body>
-    <div class="page">
+    <div class="sheet">
       <header>
         <div class="identity">
           <p class="eyebrow">Mumbai · Adobe Commerce certified</p>
@@ -344,56 +362,150 @@
           Adobe Commerce certified Magento and Laravel engineer with 3+ years of
           production commerce work. Joined TechSevin Solution LLP as a fresher
           in February 2022 and now lead BharatEmart, BharatEmart OMS, Alfa, and
-          TennisHub — technical design, code quality, and delivery.
+          TennisHub — Magento modules, Laravel APIs, search, logistics,
+          payments, and production debugging on Nginx, MySQL, and GraphQL.
         </p>
 
         <h2>Skills</h2>
-        <p class="skills">
-          <b>Commerce:</b> Magento 2.4, Adobe Commerce, GraphQL, custom modules,
-          multi-store ·
-          <b>Backend:</b> PHP, Laravel 12 / 10, REST / SOAP, JWT, queues / SQS ·
-          <b>Data &amp; search:</b> MySQL, PostgreSQL, MongoDB, Elasticsearch,
-          Algolia, Redis ·
-          <b>Ops:</b> Docker, Linux (Ubuntu), Nginx, AWS, Git, Composer ·
-          <b>Integrations:</b> Razorpay, ShipRocket, TalyPay BNPL, Twilio ·
-          <b>Frontend:</b> React, JavaScript, HTML5, CSS3 ·
-          <b>AI:</b> Cursor, Claude, Gemini, GitHub Copilot, Codex, ChatGPT
-        </p>
+        <div class="skills-grid">
+          <p class="skill-row">
+            <b>Commerce:</b> Magento 2.4, Adobe Commerce EE/CE, GraphQL, custom
+            modules, multi-store
+          </p>
+          <p class="skill-row">
+            <b>Backend:</b> PHP 8.2, Laravel 12 / 10, REST / SOAP, JWT, queues /
+            SQS, Node.js
+          </p>
+          <p class="skill-row">
+            <b>Data &amp; search:</b> MySQL, PostgreSQL, MongoDB, Elasticsearch,
+            Algolia, Redis, RabbitMQ
+          </p>
+          <p class="skill-row">
+            <b>Ops:</b> Docker, Linux (Ubuntu), Nginx, AWS S3 / SQS, Git,
+            Composer
+          </p>
+          <p class="skill-row">
+            <b>Integrations:</b> Razorpay, ShipRocket, TalyPay BNPL, Twilio, OMS
+            APIs
+          </p>
+          <p class="skill-row">
+            <b>Frontend &amp; mobile:</b> React 19, Vite, Redux, Kotlin /
+            Android, Socket.IO
+          </p>
+          <p class="skill-row">
+            <b>AI tools:</b> Cursor, Claude, Gemini, GitHub Copilot, Codex,
+            ChatGPT
+          </p>
+          <p class="skill-row">
+            <b>Practices:</b> Production debugging, GraphQL caching, module
+            reviews, staging sign-off
+          </p>
+        </div>
 
+        <h2>Selected work</h2>
+        <div class="project">
+          <h3>BharatEmart <span>— Magento 2.4 marketplace</span></h3>
+          <p>
+            GraphQL for catalog, checkout, vendors, RFQ, and returns. Custom
+            modules for OMS API, ShipRocket, split orders, OTP login, Razorpay
+            refunds, buyer clusters, and homepage / GraphQL performance.
+          </p>
+          <p class="stack">
+            Magento 2.4 · GraphQL · ShipRocket · Razorpay · Custom modules
+          </p>
+        </div>
+        <div class="project">
+          <h3>BharatEmart OMS <span>— Laravel 10 order management</span></h3>
+          <p>
+            Dedicated order service with SQS FIFO queues, PDF invoices,
+            barcodes, and payment verification — order lifecycle outside Magento
+            admin.
+          </p>
+          <p class="stack">Laravel 10 · SQS · PDF · Barcode · MySQL</p>
+        </div>
+        <div class="project">
+          <h3>Alfa <span>— Magento 2 store</span></h3>
+          <p>
+            Docker Compose with SSL, Elasticsearch, Redis, and Nginx, plus
+            deploy scripts so Magento bring-up is repeatable for the team.
+          </p>
+          <p class="stack">Magento 2 · Docker · Nginx · Redis · Elasticsearch</p>
+        </div>
+        <div class="project">
+          <h3>TennisHub <span>— Magento 2 specialty retail</span></h3>
+          <p>
+            Magento 2 upgrade and catalog, checkout, and payments work for a
+            tennis retail catalog — platform work, not a theme swap.
+          </p>
+          <p class="stack">Magento 2 · PHP · MySQL</p>
+        </div>
+        <div class="project">
+          <h3>SwasthaOne <span>— Laravel 12 healthcare platform</span></h3>
+          <p>
+            Appointments, provider / facility onboarding, JWT APIs, split
+            PostgreSQL, Elasticsearch and Redis search, Razorpay, Twilio, and
+            AWS S3.
+          </p>
+          <p class="stack">
+            Laravel 12 · React 19 · PostgreSQL · Elasticsearch · Redis · Razorpay
+          </p>
+        </div>
+        <div class="project">
+          <h3>Also shipped</h3>
+          <p>
+            TalyPay BNPL Magento payment module (checkout, observers, webhooks);
+            Alessa Kuwait on Adobe Commerce EE; Khiara Magento CE multi-store;
+            TravelSync Android + Node.js realtime group travel stack.
+          </p>
+        </div>
+
+        <h2>Education &amp; certification</h2>
+        <div class="edu-row">
+          <p>
+            <b>B.Sc. Information Technology</b> · Mumbai University · 2021
+          </p>
+          <p>
+            <b>Adobe Commerce Developer</b> · Adobe · 2023
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <div class="sheet">
+      <main>
         <h2>Experience</h2>
         <div class="journey">
           <div class="journey-inner">
-            <p class="section-kicker">Experience</p>
+            <p class="section-kicker">TechSevin Solution LLP · Mumbai</p>
             <p class="roles-title">Roles</p>
             <p class="company-line">
-              <span>TechSevin Solution LLP · Mumbai, India</span>
+              <span>One company. Three roles. Production catalogs.</span>
               <span>Feb 2022 – Present</span>
             </p>
             <div class="timeline">
               <div class="role">
                 <p class="period">Current</p>
                 <h3>Team Lead</h3>
-                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
                 <ul>
                   <li>
-                    Lead three live projects — BharatEmart, OMS, and Alfa — plus
-                    TennisHub, from architecture through production.
-                  </li>
-                  <li>
-                    Own Magento 2.4 marketplace, Laravel OMS, search, logistics,
-                    and payment integrations for those catalogs.
+                    Lead BharatEmart, OMS, Alfa, and TennisHub from architecture
+                    through production — Magento 2.4, Laravel, search,
+                    logistics, and payments.
                   </li>
                   <li>
                     Review Magento and Laravel delivery, set technical
                     direction, and debug production issues on Nginx, MySQL, and
                     GraphQL paths.
                   </li>
+                  <li>
+                    Own module design, staging sign-off, and catalog
+                    integrations: ShipRocket, Razorpay, OMS APIs.
+                  </li>
                 </ul>
               </div>
               <div class="role">
                 <p class="period">Grew into the role</p>
                 <h3>Magento Developer / Senior Backend Engineer</h3>
-                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
                 <ul>
                   <li>
                     Built and maintained Magento 2.4 and Laravel commerce
@@ -401,22 +513,21 @@
                   </li>
                   <li>
                     Took ownership of custom modules, GraphQL, ShipRocket,
-                    Razorpay, and OMS APIs.
+                    Razorpay, split orders, OTP login, and OMS APIs.
                   </li>
                   <li>
-                    Debugged performance and production issues before moving
-                    into Team Lead.
+                    Debugged homepage cache, GraphQL timing, and catalog queries
+                    before moving into Team Lead.
                   </li>
                 </ul>
               </div>
               <div class="role">
                 <p class="period">Started as a fresher</p>
                 <h3>Junior Magento Developer</h3>
-                <p class="co">TechSevin Solution LLP · Mumbai, India</p>
                 <ul>
                   <li>
-                    Joined TechSevin as a fresher and learned Magento 2, PHP,
-                    MySQL, and how production commerce actually ships.
+                    Joined TechSevin in February 2022 and learned Magento 2,
+                    PHP, MySQL, and how production commerce actually ships.
                   </li>
                   <li>
                     Supported catalog, checkout, and backend tickets that became
@@ -428,59 +539,86 @@
           </div>
         </div>
 
-        <h2>Selected work</h2>
-        <div class="project">
-          <h3>BharatEmart <span>— Magento 2.4 marketplace</span></h3>
-          <p>
-            GraphQL for catalog, checkout, vendors, RFQ, and returns. Custom
-            modules for OMS API, ShipRocket, split orders, OTP login, Razorpay
-            refunds, and homepage / GraphQL performance.
-          </p>
+        <h2>More projects</h2>
+        <div class="more-work">
+          <div class="project">
+            <h3>TalyPay <span>— Magento BNPL</span></h3>
+            <p>
+              Custom Magento 2 payment method: checkout, observers, Web API, and
+              webhooks so Magento order state stays in line with TalyPay.
+            </p>
+          </div>
+          <div class="project">
+            <h3>Alessa Kuwait <span>— Adobe Commerce EE</span></h3>
+            <p>
+              Enterprise Magento for a GCC retail catalog — attributes,
+              checkout, and operational customizations on EE rather than CE.
+            </p>
+          </div>
+          <div class="project">
+            <h3>Khiara <span>— Magento multi-store</span></h3>
+            <p>
+              Community Edition multi-store with local deploy tooling, shared
+              MySQL, and Nginx so stores can be reproduced locally.
+            </p>
+          </div>
+          <div class="project">
+            <h3>TravelSync <span>— realtime mobile</span></h3>
+            <p>
+              Kotlin Android app plus Node.js, Socket.IO, PostgreSQL, MongoDB,
+              Redis, and RabbitMQ for live group travel coordination.
+            </p>
+          </div>
         </div>
-        <div class="project">
-          <h3>BharatEmart OMS <span>— Laravel 10 order management</span></h3>
-          <p>
-            Dedicated order service with SQS FIFO queues, PDF invoices,
-            barcodes, and payment verification states — order lifecycle outside
-            Magento admin.
-          </p>
-        </div>
-        <div class="project">
-          <h3>Alfa <span>— Magento 2 store</span></h3>
-          <p>
-            Docker Compose with SSL, Elasticsearch, Redis, and Nginx, plus
-            deploy scripts so Magento bring-up is repeatable.
-          </p>
-        </div>
-        <div class="project">
-          <h3>TennisHub <span>— Magento 2 specialty retail</span></h3>
-          <p>
-            Magento 2 upgrade and catalog, checkout, and payments work for a
-            tennis retail catalog.
-          </p>
-        </div>
-        <p class="more">
-          <b>Also shipped:</b> SwasthaOne (Laravel 12 healthcare API, split
-          PostgreSQL, Elasticsearch, Razorpay, Twilio); TalyPay BNPL Magento
-          payment module; Alessa Kuwait (Adobe Commerce EE); Khiara Magento
-          multi-store.
-        </p>
 
-        <h2>Education &amp; certification</h2>
-        <div class="edu">
-          <div>
-            <b>B.Sc. Information Technology</b>
-            Mumbai University
+        <h2>How I work with AI</h2>
+        <div class="two-col">
+          <div class="ai-item">
+            <b>Cursor</b>
+            <p>
+              Day-to-day Magento 2, Laravel 12, and React. Agents for
+              multi-file refactors, migrations, and reviewing diffs before
+              staging.
+            </p>
           </div>
-          <span class="when">2021</span>
-        </div>
-        <div class="edu">
-          <div>
-            <b>Adobe Commerce Developer Certification</b>
-            Adobe
+          <div class="ai-item">
+            <b>Claude</b>
+            <p>
+              Long Magento and Laravel refactors, module design, and reading a
+              large diff with the production constraint still in mind.
+            </p>
           </div>
-          <span class="when">2023</span>
+          <div class="ai-item">
+            <b>ChatGPT / Gemini</b>
+            <p>
+              Architecture sketches, GraphQL edge cases, Magento internals, and
+              turning production symptoms into a short checklist.
+            </p>
+          </div>
+          <div class="ai-item">
+            <b>Copilot / Codex</b>
+            <p>
+              Inline PHP and GraphQL completions, first-pass CLI work, then
+              review against modules, queues, and real logs.
+            </p>
+          </div>
         </div>
+
+        <h2>Strengths</h2>
+        <ul class="strengths">
+          <li>
+            Magento 2.4 marketplace work that stays in modules — GraphQL, split
+            orders, OTP login, refunds — instead of core hacks.
+          </li>
+          <li>
+            OMS as a dedicated Laravel service (queues, invoices, verification)
+            rather than bloating Magento admin.
+          </li>
+          <li>
+            Search, payments, and logistics under load: Elasticsearch, Algolia,
+            Redis, Razorpay, TalyPay, and ShipRocket.
+          </li>
+        </ul>
       </main>
     </div>
   </body>

@@ -32,13 +32,6 @@ export function Hero() {
             >
               View work
             </a>
-            <a
-              href={withBase(profile.resume)}
-              download="Amir_Khan_Resume.pdf"
-              className="inline-flex h-12 items-center justify-center rounded-md border border-border bg-card px-7 text-sm tracking-wide transition hover:border-accent hover:text-accent"
-            >
-              Download resume
-            </a>
           </div>
         </FadeIn>
       </div>
